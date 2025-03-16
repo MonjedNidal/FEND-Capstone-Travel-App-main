@@ -53,7 +53,10 @@ export default (env, argv) => {
       new CleanWebpackPlugin({
         cleanStaleWebpackAssets: false
       }),
-      isProduction && new GenerateSW()
+      isProduction && new GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true,
+      })
     ].filter(Boolean),
     performance: {
       hints: isProduction ? 'warning' : false,
